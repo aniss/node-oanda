@@ -13,15 +13,9 @@ orders.prototype = {
       `/${this.core.apiVersion}/accounts/:account_id/orders`, 'GET', options);
   },
 
-  createNewOrder: function(account_id, instrument, units, side, type, expiry, price, options) {
-    options = util.define(options, {});
+  createNewOrder: function(account_id, order) {
+    options = util.define(order, {});
     options.account_id = account_id;
-    options.instrument = instrument;
-    options.units = units;
-    options.side = side;
-    options.type = type;
-    options.expiry = expiry;
-    options.price = price;
 
     return this.core.request(
       `/${this.core.apiVersion}/accounts/:account_id/orders`, 'POST', options);

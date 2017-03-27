@@ -90,7 +90,7 @@ core.prototype = {
 
     if(this.appendBodyData(type)) {
       url = this.requestUrlFormatter.getUrl(path, true);
-      data = this.requestUrlFormatter.createParamString(this.urlFormmater.params);
+      data = this.requestUrlFormatter.createParamString();
     }
     else{
       url = this.requestUrlFormatter.getUrl(path, false);
@@ -105,7 +105,7 @@ core.prototype = {
       this.addAuthorizationHeader(options);
     }
 
-    this.addDateFormatHeader(options);
+    this.addRequestHeaders(options);
 
     return this.makeRequest(options, data);
   },
@@ -136,8 +136,9 @@ core.prototype = {
     options.headers['Authorization'] = 'Bearer ' + this.token;
   },
 
-  addDateFormatHeader: function(options) {
+  addRequestHeaders: function(options) {
     options.headers['X-Accept-Datetime-Format'] = this.date_time_format;
+    options.headers['Content-Type'] = 'application/x-www-form-urlencoded';
   },
 
   makeRequest: function(options, body) {

@@ -12,6 +12,10 @@ formatter.prototype = {
     this.params = params;
   },
 
+  createParamString: function() {
+    return qs.stringify(this.params);
+  },
+
   getUrl: function(path, no_querystring) {
 
     var pieces = path.split('/');
