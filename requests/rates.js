@@ -18,7 +18,7 @@ rates.prototype = {
     options.instruments = util.encodeArray(instruments);
 
     return this.core.request(
-      `/${this.core.apiVersion}/instruments`, 'GET', options);
+      `/${this.core.apiVersion}/prices`, 'GET', options);
   },
 
   retrieveInstrumentHistory: function(instrument, options) {

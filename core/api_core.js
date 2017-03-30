@@ -139,6 +139,7 @@ core.prototype = {
   addRequestHeaders: function(options) {
     options.headers['X-Accept-Datetime-Format'] = this.date_time_format;
     options.headers['Content-Type'] = 'application/x-www-form-urlencoded';
+    options.headers['Accept-Encoding'] = 'gzip, deflate';
   },
 
   makeRequest: function(options, body) {
